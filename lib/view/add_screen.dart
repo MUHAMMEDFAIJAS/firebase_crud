@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,6 +8,7 @@ import 'package:project/controller/provider.dart';
 import 'package:project/model/project_model.dart';
 import 'package:project/services/project_service.dart';
 import 'package:provider/provider.dart';
+
 class AddScreen extends StatelessWidget {
   AddScreen({super.key});
 
@@ -114,7 +114,7 @@ class AddScreen extends StatelessWidget {
         throw Exception('No image selected');
       }
 
-      await service.addimage(File(imageprovider.pickedImage!.path), context);
+      await service.addimage(File(imageprovider.pickedImage!.path));
 
       final pro = Provider.of<Projectprovider>(context, listen: false);
 

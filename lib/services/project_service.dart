@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/widgets.dart';
@@ -19,7 +18,7 @@ class ProjectService {
             toFirestore: (value, options) => value.toJson(),
           );
 
-  Future<void> addimage(File image, BuildContext context) async {
+  Future<void> addimage(File image) async {
     Reference imageFolder = firebaseStorage.child('images');
     Reference uploadedimage = imageFolder.child("$imagename.jpg");
     try {
@@ -52,14 +51,13 @@ class ProjectService {
     }
   }
 
- Future<void> addData(ProjectModel model) async {
+  Future<void> addData(ProjectModel model) async {
     try {
-        await studentRef.add(model);
+      await studentRef.add(model);
     } catch (e) {
-        throw Exception('Failed to add data $e');
+      throw Exception('Failed to add data $e');
     }
-}
-
+  }
 
   Stream<QuerySnapshot<ProjectModel>> getdata() {
     return studentRef.snapshots();
@@ -77,7 +75,7 @@ class ProjectService {
     try {
       await studentRef.doc(id).update(model.toJson());
     } catch (e) {
-      print('Failed to update data: ${e.toString()}'); 
+      print('Failed to update data: ${e.toString()}');
     }
   }
 }

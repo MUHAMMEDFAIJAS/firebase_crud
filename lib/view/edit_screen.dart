@@ -74,6 +74,7 @@ class _EditPageState extends State<EditPage> {
               child: const Text("Pick Image"),
             ),
             const Gap(20),
+            
             TextFormField(
               controller: nameCtrl,
               decoration: InputDecoration(
